@@ -1,0 +1,19 @@
+{
+  "type": "postgres",
+  "host": "127.0.0.1",
+  "port": 5432,
+  "username": "postgres",
+  "password": "desmond",
+  "database": "arder_local",
+  "entities": [
+    "/Users/mac/Desktop/Arder/arder-backend/src/model/*.entity.{ts,js}"
+  ],
+  "migrationsTableName": "migration",
+  "migrations": [
+    "/Users/mac/Desktop/Arder/arder-backend/src/migration/*.{ts,js}"
+  ],
+  "cli": {
+    "migrationsDir": "src/migration"
+  },
+  "ssl": false
+}
