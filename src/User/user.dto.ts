@@ -10,13 +10,15 @@ export class UserDto {
     @ApiProperty({ default: EnumConstants.USER })
     @IsString()
     userType: string;
+    @ApiProperty({ default: 0 })
+    tokenBalance: number;
 
 
 
     public static toEntity(dto: UserDto) {
         const userVal = new User();
         userVal.name = dto.name;
-        userVal.tokenBalance = 0;
+        userVal.tokenBalance = dto.tokenBalance  ? parseFloat(dto.tokenBalance.toString()) : 0;
         userVal.fiatBalance = 0;
         userVal.userType = dto.userType == EnumConstants.COMPANY ? EnumConstants.COMPANY : EnumConstants.USER
         return userVal;

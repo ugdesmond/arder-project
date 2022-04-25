@@ -18,9 +18,15 @@ async function run() {
   let userDto = new UserDto();
   userDto.name = "TEST";
   userDto.userType = EnumConstants.USER;
-  const work = await userService.create(userDto);
 
-  return await work;
+  let company = new UserDto();
+  company.name = "DREAM LAND"
+  company.userType = EnumConstants.COMPANY;
+  company.tokenBalance=10000;
+  const work = await userService.create(userDto);
+  const companyWork = await userService.create(company);
+
+  return  { work, companyWork };
 
 }
 

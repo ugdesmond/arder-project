@@ -8,12 +8,14 @@ import { configService } from './config/config.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AccountRecordModule } from './account-record/account-record.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { TransactionService } from './transaction/transaction.service';
+import { TransactionModule } from './transaction/transaction.module';
 
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(configService.getTypeOrmConfig()),
-    UserModule, AccountRecordModule, ScheduleModule.forRoot()
+    UserModule, AccountRecordModule, ScheduleModule.forRoot(), TransactionModule
   ],
   controllers: [AppController],
   providers: [AppService],

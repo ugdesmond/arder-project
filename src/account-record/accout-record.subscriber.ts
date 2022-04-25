@@ -15,7 +15,7 @@ export class AccountRecordSubscriber implements EntitySubscriberInterface<Accoun
 
 
     afterInsert(event: InsertEvent<AccountRecord>) {
-        this.accountService.updateUserAccountBalance(event.entity.user);
+        this.accountService.updateUserAccountBalance(event.entity);
 
     }
 

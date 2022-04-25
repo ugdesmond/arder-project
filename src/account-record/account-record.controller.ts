@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
 import AccountRecord from 'src/model/accountrecord.entity';
+import Transaction from 'src/model/transaction.entity';
 import { AccountRecordService } from './account-record.service';
 import { AccountRecordDto } from './account.dto';
 
@@ -10,7 +11,7 @@ export class AccountRecordController {
 
     @ApiOperation({ summary: 'Credit user token won' })
     @Post()
-    createUserTransaction(@Body() account: AccountRecordDto): Promise<AccountRecord> {
+    createUserTransaction(@Body() account: AccountRecordDto): Promise<Transaction> {
         return this.accountService.create(account);
     }
     @ApiOperation({ summary: 'Get all user token won for the current day' })

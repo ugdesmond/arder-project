@@ -1,5 +1,6 @@
 import { PrimaryGeneratedColumn, Column, UpdateDateColumn, CreateDateColumn, Entity, OneToMany } from 'typeorm';
-import { AccountRecord } from './accountrecord.entity';
+import AccountRecord from './accountrecord.entity';
+import { Transaction } from './transaction.entity';
 
 @Entity({ name: 'User' })
 export class User {
@@ -17,11 +18,15 @@ export class User {
     userType: string;
     @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
     createDateTime: Date;
-
     @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
     lastChangedDateTime: Date;
+    @OneToMany(() => Transaction, (transaction) => transaction.accountTo)
+    transactionTo: Transaction[]
+    @OneToMany(() => Transaction, (transaction) => transaction.accountFrom)
+    transactionFrom: Transaction[]
+
     @OneToMany(() => AccountRecord, (accountRecord) => accountRecord.user)
-    accountRecord: AccountRecord[]
+    account: Transaction[]
 
 }
 
